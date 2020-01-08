@@ -1,0 +1,12 @@
+createRequest := &godo.DropletMultiCreateRequest{
+  Names: []string{"sub-01.example.com","sub-02.example.com"},
+  Region: "nyc3",
+  Size: "1gb",
+  Image: godo.DropletCreateImage{
+  Slug: "ubuntu-14-04-x64",
+  },
+  IPv6: true,
+  Tags: []string{"web"},
+}
+
+droplet, _, err := client.Droplets.CreateMultiple(createRequest)

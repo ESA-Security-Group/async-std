@@ -1,0 +1,35 @@
+os:
+  - linux
+  - osx
+  - windows
+
+language: go
+go_import_path: github.com/google/go-cloud
+go: "1.11.x"
+
+before_install:
+  - "df -k"
+  # The Bash that comes with OS X is ancient.
+  # grep is similar: it's not GNU grep, which means commands aren't portable.
+  # Homebrew installs grep as ggrep if you don't build from source, so it needs
+  # moving so it takes precedence in the PATH.
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      HOMEBREW_NO_AUTO_UPDATE=1 brew install bash grep;
+      mv $(brew --prefix)/bin/ggrep $(brew --prefix)/bin/grep;
+    fi
+
+install:
+  # Re-checkout files preserving line feeds. This prevents Windows builds from
+  # converting \n to \r\n.
+  - "git config --global core.autocrlf input"
+  - "git checkout -- ."
+  - "go install ./wire/cmd/wire"
+  - "go install github.com/mattn/goveralls"
+
+script:
+  - 'internal/testing/runchecks.sh'
+
+env:
+  global:
+  - GOPROXY=https://storage.googleapis.com/go-cloud-modules/
+  - GO111MODULE=on

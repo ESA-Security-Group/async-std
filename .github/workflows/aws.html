@@ -1,0 +1,475 @@
+<!DOCTYPE html><html lang="en">
+<head profile="http://a9.com/-/spec/opensearch/1.1/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/-/bootstrap.min.css?v=8bec1bba3e23ecba22cffb197a2d440af410b15d" rel="stylesheet">
+  <link href="/-/site.css?v=7d81f4104c89dbe376345f6bfe3e62b4e40d3d06" rel="stylesheet">
+  
+  
+  <title>aws - GoDoc</title>
+  
+    <meta name="twitter:title" content="Package aws">
+    <meta property="og:title" content="Package aws">
+    <meta name="description" content="Package aws provides Exporter support for AWS XRay for traces.">
+    <meta name="twitter:description" content="Package aws provides Exporter support for AWS XRay for traces.">
+    <meta property="og:description" content="Package aws provides Exporter support for AWS XRay for traces.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@golang">
+  
+  
+
+  
+
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/"><strong>GoDoc</strong></a>
+  </div>
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/-/about">About</a></li>
+    </ul>
+    <form class="navbar-nav navbar-form navbar-right" id="x-search" action="/" role="search"><input class="form-control" id="x-search-query" type="text" name="q" placeholder="Search"></form>
+  </div>
+</div>
+</nav>
+
+<div class="container">
+  
+  
+
+
+
+        <div class="clearfix" id="x-projnav">
+  <a href="https://github.com/census-ecosystem/opencensus-go-exporter-aws"><strong>aws:</strong></a>
+  <span class="text-muted">contrib.go.opencensus.io/exporter/aws</span>
+  
+  <span class="pull-right">
+    
+      <a href="#pkg-index">Index</a>
+      
+      <span class="text-muted">|</span>
+    
+    <a href="#pkg-files">Files</a>
+    <span class="text-muted">|</span> <a href="#pkg-subdirectories">Directories</a>
+  </span>
+  
+</div>
+
+        <h2 id="pkg-overview">package aws</h2>
+
+        <p><code>import "contrib.go.opencensus.io/exporter/aws"</code>
+
+        <p>
+Package aws provides Exporter support for AWS XRay for traces.</p>
+
+
+        
+  
+
+
+        
+        <h3 id="pkg-index" class="section-header">Index <a class="permalink" href="#pkg-index">&para;</a></h3>
+
+        
+
+        <ul class="list-unstyled">
+          <li><a href="#pkg-constants">Constants</a></li>
+          
+          <li><a href="#ParseTraceHeader">func ParseTraceHeader(header string) (trace.SpanContext, bool)</a></li><li><a href="#TraceHeader">func TraceHeader(sc trace.SpanContext) string</a></li>
+          
+            <li><a href="#Exporter">type Exporter</a></li>
+            <ul>
+            <li><a href="#NewExporter">func NewExporter(opts ...Option) (*Exporter, error)</a></li>
+            <li><a href="#Exporter.Close">func (e *Exporter) Close() error</a></li><li><a href="#Exporter.ExportSpan">func (e *Exporter) ExportSpan(s *trace.SpanData)</a></li><li><a href="#Exporter.Flush">func (e *Exporter) Flush()</a></li>
+            </ul>
+          
+            <li><a href="#HTTPFormat">type HTTPFormat</a></li>
+            <ul>
+            
+            <li><a href="#HTTPFormat.SpanContextFromRequest">func (f *HTTPFormat) SpanContextFromRequest(req *http.Request) (sc trace.SpanContext, ok bool)</a></li><li><a href="#HTTPFormat.SpanContextToRequest">func (f *HTTPFormat) SpanContextToRequest(sc trace.SpanContext, req *http.Request)</a></li>
+            </ul>
+          
+            <li><a href="#OnExport">type OnExport</a></li>
+            
+            
+            
+            
+          
+            <li><a href="#Option">type Option</a></li>
+            <ul>
+            <li><a href="#WithAPI">func WithAPI(api xrayiface.XRayAPI) Option</a></li><li><a href="#WithBlacklist">func WithBlacklist(blacklist []*regexp.Regexp) Option</a></li><li><a href="#WithBufferSize">func WithBufferSize(bufferSize int) Option</a></li><li><a href="#WithInterval">func WithInterval(interval time.Duration) Option</a></li><li><a href="#WithOnExport">func WithOnExport(fn func(OnExport)) Option</a></li><li><a href="#WithOrigin">func WithOrigin(origin origin) Option</a></li><li><a href="#WithOutput">func WithOutput(w io.Writer) Option</a></li><li><a href="#WithRegion">func WithRegion(region string) Option</a></li><li><a href="#WithServiceName">func WithServiceName(name string) Option</a></li><li><a href="#WithVersion">func WithVersion(version string) Option</a></li>
+            
+            </ul>
+          
+          
+        </ul>
+
+        
+        
+          <span id="pkg-examples"></span>
+        
+
+        
+        
+<h4 id="pkg-files">
+  <a href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/tree/master">Package Files</a>
+  <a class="permalink" href="#pkg-files">&para;</a>
+</h4>
+
+<p><a href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/doc.go">doc.go</a> <a href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/error.go">error.go</a> <a href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/http.go">http.go</a> <a href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/http_propagation.go">http_propagation.go</a> <a href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/segment.go">segment.go</a> <a href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go">xray.go</a> </p>
+
+        
+        
+          <h3 id="pkg-constants">Constants <a class="permalink" href="#pkg-constants">&para;</a></h3>
+          <div class="decl" data-kind="c"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/segment.go#L36">❖</a><pre>const (
+    <span class="com">// OriginEC2 span originated from EC2</span>
+    <span id="OriginEC2">OriginEC2</span> origin = &#34;AWS::EC2::Instance&#34;
+
+    <span class="com">// OriginECS span originated from Elastic Container Service (ECS)</span>
+    <span id="OriginECS">OriginECS</span> origin = &#34;AWS::ECS::Container&#34;
+
+    <span class="com">// OriginEB span originated from Elastic Beanstalk (EB)</span>
+    <span id="OriginEB">OriginEB</span> origin = &#34;AWS::ElasticBeanstalk::Environment&#34;
+)</pre></div>
+        
+
+        
+        
+
+        
+        
+        
+          <h3 id="ParseTraceHeader" data-kind="f">func <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/http_propagation.go#L41">ParseTraceHeader</a> <a class="permalink" href="#ParseTraceHeader">&para;</a> <a class="uses" title="List Function Callers" href="https://sourcegraph.com/-/godoc/refs?def=ParseTraceHeader&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h3>
+          <div class="funcdecl decl"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/http_propagation.go#L41">❖</a><pre>func ParseTraceHeader(header <a href="/builtin#string">string</a>) (<a href="/go.opencensus.io/trace">trace</a>.<a href="/go.opencensus.io/trace#SpanContext">SpanContext</a>, <a href="/builtin#bool">bool</a>)</pre></div><p>
+ParseTraceHeader parses an Amazon trace header to OpenCensus span context.
+</p>
+
+          
+  
+
+        
+          <h3 id="TraceHeader" data-kind="f">func <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/segment.go#L160">TraceHeader</a> <a class="permalink" href="#TraceHeader">&para;</a> <a class="uses" title="List Function Callers" href="https://sourcegraph.com/-/godoc/refs?def=TraceHeader&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h3>
+          <div class="funcdecl decl"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/segment.go#L160">❖</a><pre>func TraceHeader(sc <a href="/go.opencensus.io/trace">trace</a>.<a href="/go.opencensus.io/trace#SpanContext">SpanContext</a>) <a href="/builtin#string">string</a></pre></div><p>
+TraceHeader converts an OpenCensus span context to AWS X-Ray trace header.
+</p>
+
+          
+  
+
+        
+
+        
+        
+
+        
+          <h3 id="Exporter" data-kind="t">type <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L148">Exporter</a> <a class="permalink" href="#Exporter">&para;</a> <a class="uses" title="List Uses of This Type" href="https://sourcegraph.com/-/godoc/refs?def=Exporter&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h3>
+          <div class="decl" data-kind="d"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L148">❖</a><pre>type Exporter struct {
+    <span class="com">// contains filtered or unexported fields</span>
+}</pre></div><p>
+Exporter is an implementation of trace.Exporter that uploads spans to AWS XRay
+</p>
+
+          
+          
+          
+  
+
+
+          
+            <h4 id="NewExporter" data-kind="f">func <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L277">NewExporter</a> <a class="permalink" href="#NewExporter">&para;</a> <a class="uses" title="List Function Callers" href="https://sourcegraph.com/-/godoc/refs?def=NewExporter&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L277">❖</a><pre>func NewExporter(opts ...<a href="#Option">Option</a>) (*<a href="#Exporter">Exporter</a>, <a href="/builtin#error">error</a>)</pre></div><p>
+NewExporter returns an implementation of trace.Exporter that uploads spans
+to AWS X-Ray
+</p>
+
+            
+  
+
+          
+
+          
+            <h4 id="Exporter.Close" data-kind="m">func (*Exporter) <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L413">Close</a> <a class="permalink" href="#Exporter.Close">&para;</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Exporter%2FClose&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L413">❖</a><pre>func (e *<a href="#Exporter">Exporter</a>) Close() <a href="/builtin#error">error</a></pre></div><p>
+Close this exporter and publish any spans that may have been buffered
+</p>
+
+            
+  
+
+          
+            <h4 id="Exporter.ExportSpan" data-kind="m">func (*Exporter) <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L436">ExportSpan</a> <a class="permalink" href="#Exporter.ExportSpan">&para;</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Exporter%2FExportSpan&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L436">❖</a><pre>func (e *<a href="#Exporter">Exporter</a>) ExportSpan(s *<a href="/go.opencensus.io/trace">trace</a>.<a href="/go.opencensus.io/trace#SpanData">SpanData</a>)</pre></div><p>
+ExportSpan exports a span to AWS X-Ray
+</p>
+
+            
+  
+
+          
+            <h4 id="Exporter.Flush" data-kind="m">func (*Exporter) <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L428">Flush</a> <a class="permalink" href="#Exporter.Flush">&para;</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Exporter%2FFlush&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L428">❖</a><pre>func (e *<a href="#Exporter">Exporter</a>) Flush()</pre></div>
+            
+  
+
+          
+        
+          <h3 id="HTTPFormat" data-kind="t">type <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/http_propagation.go#L36">HTTPFormat</a> <a class="permalink" href="#HTTPFormat">&para;</a> <a class="uses" title="List Uses of This Type" href="https://sourcegraph.com/-/godoc/refs?def=HTTPFormat&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h3>
+          <div class="decl" data-kind="d"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/http_propagation.go#L36">❖</a><pre>type HTTPFormat struct{}</pre></div><p>
+HTTPFormat implements propagation.HTTPFormat to propagate
+traces in HTTP headers for for Amazon services: ELB, ALB, Lambda, etc.
+</p>
+
+          
+          
+          
+  
+
+
+          
+
+          
+            <h4 id="HTTPFormat.SpanContextFromRequest" data-kind="m">func (*HTTPFormat) <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/http_propagation.go#L100">SpanContextFromRequest</a> <a class="permalink" href="#HTTPFormat.SpanContextFromRequest">&para;</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=HTTPFormat%2FSpanContextFromRequest&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/http_propagation.go#L100">❖</a><pre>func (f *<a href="#HTTPFormat">HTTPFormat</a>) SpanContextFromRequest(req *<a href="/net/http">http</a>.<a href="/net/http#Request">Request</a>) (sc <a href="/go.opencensus.io/trace">trace</a>.<a href="/go.opencensus.io/trace#SpanContext">SpanContext</a>, ok <a href="/builtin#bool">bool</a>)</pre></div><p>
+SpanContextFromRequest extracts an AWS X-Ray Trace span context from incoming requests.
+</p>
+
+            
+  
+
+          
+            <h4 id="HTTPFormat.SpanContextToRequest" data-kind="m">func (*HTTPFormat) <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/http_propagation.go#L114">SpanContextToRequest</a> <a class="permalink" href="#HTTPFormat.SpanContextToRequest">&para;</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=HTTPFormat%2FSpanContextToRequest&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/http_propagation.go#L114">❖</a><pre>func (f *<a href="#HTTPFormat">HTTPFormat</a>) SpanContextToRequest(sc <a href="/go.opencensus.io/trace">trace</a>.<a href="/go.opencensus.io/trace#SpanContext">SpanContext</a>, req *<a href="/net/http">http</a>.<a href="/net/http#Request">Request</a>)</pre></div><p>
+SpanContextToRequest modifies the given request to include a AWS X-Ray trace header.
+</p>
+
+            
+  
+
+          
+        
+          <h3 id="OnExport" data-kind="t">type <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L37">OnExport</a> <a class="permalink" href="#OnExport">&para;</a> <a class="uses" title="List Uses of This Type" href="https://sourcegraph.com/-/godoc/refs?def=OnExport&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h3>
+          <div class="decl" data-kind="d"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L37">❖</a><pre>type OnExport struct {
+    <span class="com">// TraceID holds the raw aws traceID e.g. 1-581cf771-a006649127e371903a2de979</span>
+    <span id="OnExport.TraceID">TraceID</span> <a href="/builtin#string">string</a>
+}</pre></div><p>
+OnExport structure passed when a root segment is published
+</p>
+
+          
+          
+          
+  
+
+
+          
+
+          
+        
+          <h3 id="Option" data-kind="t">type <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L63">Option</a> <a class="permalink" href="#Option">&para;</a> <a class="uses" title="List Uses of This Type" href="https://sourcegraph.com/-/godoc/refs?def=Option&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h3>
+          <div class="decl" data-kind="m"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L63">❖</a><pre>type Option interface {
+    <span class="com">// contains filtered or unexported methods</span>
+}</pre></div>
+          
+          
+          
+  
+
+
+          
+            <h4 id="WithAPI" data-kind="f">func <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L95">WithAPI</a> <a class="permalink" href="#WithAPI">&para;</a> <a class="uses" title="List Function Callers" href="https://sourcegraph.com/-/godoc/refs?def=WithAPI&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L95">❖</a><pre>func WithAPI(api <a href="/github.com/aws/aws-sdk-go/service/xray/xrayiface">xrayiface</a>.<a href="/github.com/aws/aws-sdk-go/service/xray/xrayiface#XRayAPI">XRayAPI</a>) <a href="#Option">Option</a></pre></div><p>
+WithAPI - optional manually constructed api instance
+</p>
+
+            
+  
+
+          
+            <h4 id="WithBlacklist" data-kind="f">func <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L141">WithBlacklist</a> <a class="permalink" href="#WithBlacklist">&para;</a> <a class="uses" title="List Function Callers" href="https://sourcegraph.com/-/godoc/refs?def=WithBlacklist&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L141">❖</a><pre>func WithBlacklist(blacklist []*<a href="/regexp">regexp</a>.<a href="/regexp#Regexp">Regexp</a>) <a href="#Option">Option</a></pre></div><p>
+WithBlacklist filters out the spans those names match one of the given regexps.
+</p>
+
+            
+  
+
+          
+            <h4 id="WithBufferSize" data-kind="f">func <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L134">WithBufferSize</a> <a class="permalink" href="#WithBufferSize">&para;</a> <a class="uses" title="List Function Callers" href="https://sourcegraph.com/-/godoc/refs?def=WithBufferSize&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L134">❖</a><pre>func WithBufferSize(bufferSize <a href="/builtin#int">int</a>) <a href="#Option">Option</a></pre></div><p>
+WithBufferSize - specifies the maximum number of spans to buffer before publishing them; defaults to 100
+</p>
+
+            
+  
+
+          
+            <h4 id="WithInterval" data-kind="f">func <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L127">WithInterval</a> <a class="permalink" href="#WithInterval">&para;</a> <a class="uses" title="List Function Callers" href="https://sourcegraph.com/-/godoc/refs?def=WithInterval&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L127">❖</a><pre>func WithInterval(interval <a href="/time">time</a>.<a href="/time#Duration">Duration</a>) <a href="#Option">Option</a></pre></div><p>
+WithInterval - specifies longest time before buffered spans are published; defaults to 1s
+</p>
+
+            
+  
+
+          
+            <h4 id="WithOnExport" data-kind="f">func <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L103">WithOnExport</a> <a class="permalink" href="#WithOnExport">&para;</a> <a class="uses" title="List Function Callers" href="https://sourcegraph.com/-/godoc/refs?def=WithOnExport&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L103">❖</a><pre>func WithOnExport(fn func(<a href="#OnExport">OnExport</a>)) <a href="#Option">Option</a></pre></div><p>
+WithOnExport - function to be called when spans are published to AWS; useful
+if you would like the traceID used for AWS
+</p>
+
+            
+  
+
+          
+            <h4 id="WithOrigin" data-kind="f">func <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L111">WithOrigin</a> <a class="permalink" href="#WithOrigin">&para;</a> <a class="uses" title="List Function Callers" href="https://sourcegraph.com/-/godoc/refs?def=WithOrigin&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L111">❖</a><pre>func WithOrigin(origin origin) <a href="#Option">Option</a></pre></div><p>
+WithOrigin - specifies the aws origin of the span; currently supported are
+OriginEC2, OriginECS, and OriginEB
+</p>
+
+            
+  
+
+          
+            <h4 id="WithOutput" data-kind="f">func <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L88">WithOutput</a> <a class="permalink" href="#WithOutput">&para;</a> <a class="uses" title="List Function Callers" href="https://sourcegraph.com/-/godoc/refs?def=WithOutput&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L88">❖</a><pre>func WithOutput(w <a href="/io">io</a>.<a href="/io#Writer">Writer</a>) <a href="#Option">Option</a></pre></div><p>
+WithOutput - optional writer for error messages
+</p>
+
+            
+  
+
+          
+            <h4 id="WithRegion" data-kind="f">func <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L81">WithRegion</a> <a class="permalink" href="#WithRegion">&para;</a> <a class="uses" title="List Function Callers" href="https://sourcegraph.com/-/godoc/refs?def=WithRegion&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L81">❖</a><pre>func WithRegion(region <a href="/builtin#string">string</a>) <a href="#Option">Option</a></pre></div><p>
+WithRegion - optional aws region to send xray messages to
+</p>
+
+            
+  
+
+          
+            <h4 id="WithServiceName" data-kind="f">func <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L74">WithServiceName</a> <a class="permalink" href="#WithServiceName">&para;</a> <a class="uses" title="List Function Callers" href="https://sourcegraph.com/-/godoc/refs?def=WithServiceName&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L74">❖</a><pre>func WithServiceName(name <a href="/builtin#string">string</a>) <a href="#Option">Option</a></pre></div><p>
+WithServiceName - specifies the service name the exporter will report to xray
+</p>
+
+            
+  
+
+          
+            <h4 id="WithVersion" data-kind="f">func <a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L118">WithVersion</a> <a class="permalink" href="#WithVersion">&para;</a> <a class="uses" title="List Function Callers" href="https://sourcegraph.com/-/godoc/refs?def=WithVersion&amp;pkg=contrib.go.opencensus.io%2Fexporter%2Faws&amp;repo=contrib.go.opencensus.io%2Fexporter%2Faws">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/census-ecosystem/opencensus-go-exporter-aws/blob/master/xray.go#L118">❖</a><pre>func WithVersion(version <a href="/builtin#string">string</a>) <a href="#Option">Option</a></pre></div><p>
+WithVersion - specifies the version of the application running
+</p>
+
+            
+  
+
+          
+
+          
+        
+        
+
+
+
+<h3 id="pkg-subdirectories">Directories <a class="permalink" href="#pkg-subdirectories">&para;</a></h3>
+    <table class="table table-condensed">
+    <thead><tr><th>Path</th><th>Synopsis</th></tr></thead>
+    <tbody><tr><td><a href="/contrib.go.opencensus.io/exporter/aws/examples/xray">examples/xray</a><td>Command xray is an example program that creates spans and uploads to AWS X-Ray.</td></tr></tbody>
+    </table>
+
+<div id="x-pkginfo">
+
+  <form name="x-refresh" method="POST" action="/-/refresh"><input type="hidden" name="path" value="contrib.go.opencensus.io/exporter/aws"></form>
+  <p>Package aws imports <a href="?imports">23 packages</a> (<a href="?import-graph">graph</a>) and is imported by <a href="?importers">7 packages</a>.
+  Updated <span class="timeago" title="2019-08-09T13:09:38Z">2019-08-09</span>.
+  <a href="javascript:document.getElementsByName('x-refresh')[0].submit();" title="Refresh this page from the source.">Refresh now</a>.
+  <a href="?tools">Tools</a> for package owners.
+  
+
+
+</div>
+
+        <div id="x-jump" tabindex="-1" class="modal">
+            <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Jump to identifier</h4>
+                <br class="clearfix">
+                <input id="x-jump-filter" class="form-control" autocomplete="off" type="text">
+              </div>
+              <div id="x-jump-body" class="modal-body" style="height: 260px; overflow: auto;">
+                <div id="x-jump-list" class="list-group" style="margin-bottom: 0;"></div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+  
+
+</div>
+<div id="x-footer" class="clearfix">
+  <div class="container">
+    <a href="https://github.com/golang/gddo/issues">Website Issues</a>
+    <span class="text-muted">|</span> <a href="https://golang.org/">Go Language</a>
+    <span class="pull-right"><a href="#">Back to top</a></span>
+  </div>
+</div>
+
+<div id="x-shortcuts" tabindex="-1" class="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Keyboard shortcuts</h4>
+        </div>
+        <div class="modal-body">
+          <table>
+          <tr><td align="right"><b>?</b></td><td> : This menu</td></tr>
+          <tr><td align="right"><b>/</b></td><td> : Search site</td></tr>
+          <tr><td align="right"><b>f</b></td><td> : Jump to identifier</td></tr>
+          <tr><td align="right"><b>g</b> then <b>g</b></td><td> : Go to top of page</td></tr>
+          <tr><td align="right"><b>g</b> then <b>b</b></td><td> : Go to end of page</td></tr>
+          <tr><td align="right"><b>g</b> then <b>i</b></td><td> : Go to index</td></tr>
+          <tr><td align="right"><b>g</b> then <b>e</b></td><td> : Go to examples</td></tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/-/jquery-2.0.3.min.js?v=fbf9c77d0c4e3c34a485980c1e5316b6212160c8"></script>
+<script src="/-/bootstrap.min.js?v=5ada7c103fc1deabc925cc1fdbbb6e451c21fc70"></script>
+<script src="/-/site.js?v=371de731c18d91c499d90b1ab0bf39ecf66d6cf7"></script>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11222381-8']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</body>
+</html>

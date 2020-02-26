@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="hasSidebar hasPageActions hasBreadcrumb conceptual has-default-focus theme-light" lang="en-us" dir="ltr" data-css-variable-support="true" data-authenticated="false" data-auth-status-determined="false" data-target="docs" x-ms-format-detection="none">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta property="og:title" content="App Center Distribute for iOS - Visual Studio App Center" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.microsoft.com/en-us/appcenter/sdk/distribute/ios" />
+			<meta property="og:description" content="Using in-app updates in App Center Distribute" />
+		<meta property="og:image" content="https://docs.microsoft.com/en-us/media/logos/logo-ms-social.png" />
+		<meta property="og:image:alt" content="Microsoft Logo" />
+
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@docsmsft" />
+
+		<meta name="audience" content="developer" />
+<meta name="manager" content="amburns" />
+<meta name="breadcrumb_path" content="../../_breadcrumb/toc.json" />
+<meta name="ms.topic" content="article" />
+<meta name="ms.service" content="vs-appcenter-sdk" />
+<meta name="ms.subservice" content="app-center-distribute" />
+<meta name="uhfHeaderId" content="MSDocsHeader-AppCenter" />
+<meta name="ms.tgt_pltfrm" content="ios" />
+<meta name="ms.assetid" content="f91fcd0b-d5e6-4c74-89a8-f71c2ee57556" />
+<meta name="author" content="botatoes" />
+<meta name="description" content="Using in-app updates in App Center Distribute" />
+<meta name="ms.author" content="bofu" />
+<meta name="keywords" content="sdk, distribute" />
+<meta name="ms.date" content="01/27/2020" />
+<meta name="search.ms_sitename" content="Docs" />
+<meta name="search.ms_docsetname" content="vs-appcenter" />
+<meta name="locale" content="en-us" />
+<meta name="site_name" content="Docs" />
+<meta name="search.ms_product" content="MSDN" />
+<meta name="depot_name" content="MSDN.vs-appcenter" />
+<meta name="updated_at" content="2020-02-20 10:31 PM" />
+<meta name="gitcommit" content="https://github.com/MicrosoftDocs/appcenter-docs-pr/blob/a7029aa815e348b1b6279e631affd3d581f307e8/docs/sdk/distribute/ios.md" />
+<meta name="original_content_git_url" content="https://github.com/MicrosoftDocs/appcenter-docs-pr/blob/live/docs/sdk/distribute/ios.md" />
+<meta name="document_id" content="b2564a62-1ac9-7f03-6474-0c74944319ed" />
+<meta name="document_version_independent_id" content="816a828c-959f-c438-53bf-441db73aab6f" />
+<meta name="page_type" content="conceptual" />
+<meta name="toc_rel" content="../../TOC.json" />
+<meta name="pdf_url_template" content="https://docs.microsoft.com/pdfstore/en-us/MSDN.vs-appcenter/{branchName}{pdfName}" />
+<meta name="search.mshattr.devlang" content="swift objc" />
+<meta name="word_count" content="2401" />
+
+	<meta name="scope" content="App Center" />
+<link href="https://docs.microsoft.com/en-us/appcenter/sdk/distribute/ios" rel="canonical">
+	<title>App Center Distribute for iOS - Visual Studio App Center | Microsoft Docs</title>
+
+		<link rel="stylesheet" href="/_themes/docs.theme/master/en-us/_themes/styles/1ec56684.site-ltr.css ">
+
+	<link rel="stylesheet" href="/_themes/docs.theme/master/en-us/_themes/styles/672b4bb0.conceptual.css ">
+
+
+	<script>
+	var msDocs = {
+		data: {
+			timeOrigin: Date.now(),
+			azureHeaderLocale: 'en-us',
+			contentLocale: 'en-us',
+			contentDir: 'ltr',
+			userLocale: 'en-us',
+			userDir: 'ltr',
+			pageTemplate: 'Conceptual',
+			brand: '',
+			context: {
+
+			},
+			hasComments: true,
+			showFeedbackReport: false,
+			enableTutorialFeedback: false,
+			feedbackSystem: 'GitHub',
+			feedbackGitHubRepo: 'MicrosoftDocs/appcenter-docs',
+			feedbackProductUrl: 'https://intercom.help/appcenter/getting-started/getting-help-with-app-center',
+			contentGitUrl: 'https://github.com/MicrosoftDocs/appcenter-docs/blob/live/docs/sdk/distribute/ios.md',
+			extendBreadcrumb: true,
+		},
+		functions:{}
+	};
+	if (!('Promise' in window && 'resolve' in window.Promise && 'reject' in window.Promise && 'all' in window.Promise && 'race' in window.Promise)) {
+		document.write('<script src="https://static.docs.com/ui/third-party/bluebird/3.5.0/bluebird.min.js" integrity="sha384-aD4BDeDGeLXLpPK4yKeqtZQa9dv4a/7mQ+4L5vwshIYH1Mc2BrXvHd32iHzYCQy5" crossorigin="anonymous"><\/script>');
+	}
+	if (typeof fetch !== 'function') {
+		document.write('<script src="https://static.docs.com/ui/third-party/fetch/3.0.0/fetch.umd.min.js" integrity="sha384-EQIXrC5K2+7X8nGgLkB995I0/6jfAvvyG1ieZ+WYGxgJHFMD/alsG9fSDWvzb5Y1" crossorigin="anonymous"><\/script>');
+	}
+	if (typeof HTMLTemplateElement === 'undefined') {
+		document.write('<script src="https://static.docs.com/ui/third-party/template/1.4.0/template.min.js" integrity="sha384-1zKzI6ldTVHMU7n0W2HpE/lhHI+UG4D9IIaxbj3kT2UhCWicdTuJkTtnKuu0CQzN" crossorigin="anonymous"><\/script>');
+	}
+	if (typeof URL !== 'function') {
+		document.write('<script src="https://static.docs.com/ui/third-party/url/0.5.7/url.min.js" integrity="sha384-vn7xBMtpSTfzaTRWxj0kVq0UcsbBrTOgZ/M1ISHqe1V358elYva+lfiEC+T8jLPc" crossorigin="anonymous"><\/script>');
+	}
+	</script>
+
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+		<script src="/_themes/docs.theme/master/en-us/_themes/scripts/25edd126.index-docs.js"></script>
+
+</head>
+
+<body lang="en-us" dir="ltr">
+<div class="header-holder has-default-focus">
+	<a href="#main" class="skip-to-main-link visually-hidden-until-focused is-fixed has-inner-focus focus-visible has-top-zero has-left-zero has-right-zero has-padding-medium has-text-centered has-body-background-medium" tabindex="1">Skip to main content</a>
+		<div id="headerAreaHolder" data-bi-name="header">
+<header role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization">
+	<div class="nav-bar">
+		<button class="nav-bar-burger" aria-label="Global navigation" aria-controls="nav-bar-mobile-nav" aria-expanded="false">
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
+		<nav class="nav-bar-mobile-nav" role="navigation" id="nav-bar-mobile-nav" aria-label="Global" hidden="">
+		</nav>
+		<a class="nav-bar-button" itemprop="url" href="https://www.microsoft.com" aria-label="Microsoft">
+			<div class="nav-bar-logo has-background-image theme-display is-light" role="presentation" aria-hidden="true" itemprop="logo" itemscope="itemscope"></div>
+			<div class="nav-bar-logo has-background-image theme-display is-dark is-high-contrast" role="presentation" aria-hidden="true" itemprop="logo" itemscope="itemscope"></div>
+		</a>
+		<nav class="nav-bar-nav" role="navigation" aria-label="Global">
+		</nav>
+		<span class="nav-bar-spacer"></span>
+		<div class="nav-bar-item is-invisible"> <!-- For Forums mobile layout rendering -->
+			<button id="form-expander" class="nav-bar-button has-hover-underline has-margin-left-extra-small"></button>
+		</div>
+	</div>
+</header>		</div>
+		<div class="content-header uhf-container has-padding has-default-focus" data-bi-name="content-header">
+			<nav class="has-padding-none-mobile has-flex-grow" data-bi-name="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Breadcrumb">
+				<ul id="page-breadcrumbs" class="breadcrumbs">
+				</ul>
+			</nav>
+		<div class="content-header-controls">
+			<button type="button" class="contents-button button" data-bi-name="contents-expand" aria-haspopup="true">
+				<span class="icon"><span class="docon docon-menu" aria-hidden="true"></span></span>
+				<span>Contents</span>
+			</button>
+		</div>
+		<div class="content-header-controls exit-focus">
+			<button type="button" class="ap-collapse-behavior ap-expanded button" data-bi-name="ap-collapse" aria-controls="action-panel">
+				<span class="icon"><span class="docon docon-exit-mode" aria-hidden="true"></span></span>
+				<span>Exit focus mode</span>
+			</button>
+		</div>
+		<div class="is-size-7 is-flex-touch has-flex-justify-content-space-between-touch has-flex-grow has-padding-none has-padding-none-mobile">
+			<ul class="action-list has-flex-justify-content-start has-flex-justify-content-end-tablet is-flex is-flex-row has-flex-wrap has-flex-grow is-unstyled">
+				<li>
+<div class="language dropdown has-caret">
+	<button class="dropdown-trigger button is-text is-small" aria-controls="language-menu" aria-expanded="false" title="Language" data-bi-name="language">
+		<span class="icon is-hidden-desktop has-margin-none">
+			<span class="docon docon-code-lang" aria-hidden="true"></span>
+		</span>
+		<span id="lang-title" class="is-visually-hidden-touch has-flex-align-self-start is-hidden-portrait">Language</span>
+		<span class="icon is-hidden-mobile is-hidden-tablet-only" aria-hidden="true">
+			<span class="docon docon-chevron-down-light expanded-indicator"></span>
+		</span>
+	</button>
+	<div class="dropdown-menu has-padding-small" name="language-selector" id="language-selector" role="menu">
+		<ul data-bi-name="language-links">
+				<li><a class="button is-text is-small is-fullwidth has-flex-justify-content-start" data-bi-name="lang-swift" tabindex="0" aria-selected="false">Swift</a></li>
+				<li><a class="button is-text is-small is-fullwidth has-flex-justify-content-start" data-bi-name="lang-objc" tabindex="0" aria-selected="false">Objective-C</a></li>
+		</ul>
+	</div>
+</div>				</li>
+				<li>
+					<button type="button" class="bookmark button is-text has-inner-focus is-small is-icon-only-touch" data-list-type="bookmarks" data-bi-name="bookmark" title="Bookmark this page">
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-single-bookmark"></span>
+						</span>
+						<span class="bookmark-status is-visually-hidden-touch is-hidden-portrait">Bookmark</span>
+					</button>
+				</li>
+								<li>
+						<a href="#feedback" class="button is-text has-inner-focus is-small is-icon-only-touch" data-bi-name="comments" title="Send feedback about this page">
+							<span class="icon">
+								<span class="docon docon-comment-lines" aria-hidden="true"></span>
+							</span>
+							<span class="is-visually-hidden-touch is-hidden-portrait">Feedback</span>
+						</a>
+					</li>
+							<li id="contenteditbtn">
+									<a href="https://github.com/MicrosoftDocs/appcenter-docs/blob/live/docs/sdk/distribute/ios.md" class="button is-text has-inner-focus is-icon-only-touch is-small" title="Edit This Document" data-bi-name="edit" data-original_content_git_url="https://github.com/MicrosoftDocs/appcenter-docs-pr/blob/live/docs/sdk/distribute/ios.md" data-original_content_git_url_template="" data-pr_repo="" data-pr_branch="">
+									<span class="icon">
+										<span class="docon docon-edit-outline" aria-hidden="true"></span>
+									</span>
+									<span class="is-visually-hidden-touch is-hidden-portrait">Edit</span>
+								</a>
+							</li>
+				<li>
+<div class="sharing dropdown has-caret">
+	<button class="dropdown-trigger button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small is-icon-only-touch" aria-controls="sharing-menu" aria-expanded="false" title="Share This Document" data-bi-name="share">
+		<span class="icon" aria-hidden="true">
+			<span class="docon docon-sharing"></span>
+		</span>
+		<span class="is-visually-hidden-touch is-hidden-portrait">Share</span>
+	</button>
+	<div class="dropdown-menu has-padding-small" id="sharing-menu">
+		<ul data-bi-name="share-links">
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-twitter" data-bi-name="twitter">
+					<span class="icon">
+						<span class="docon docon-brand-twitter has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Twitter</span>
+				</a>
+			</li>
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-linkedin" data-bi-name="linkedin">
+					<span class="icon">
+						<span class="docon docon-brand-linkedin has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>LinkedIn</span>
+				</a>
+			</li>
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-facebook" data-bi-name="facebook">
+					<span class="icon">
+						<span class="docon docon-brand-facebook has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Facebook</span>
+				</a>
+			</li>
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-email" data-bi-name="email">
+					<span class="icon">
+						<span class="docon docon-mail-message-fill has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Email</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>				</li>
+				<li>
+<div class="dropdown has-caret">
+	<button class="dropdown-trigger button is-text is-small is-icon-only-touch has-inner-focus"
+		aria-controls="theme-menu" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span class="is-visually-hidden-touch is-hidden-portrait">Theme</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu" role="menu">
+		<ul class="theme-selector has-padding-small">
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start"
+					data-theme-to="light">
+					<span class="theme-light has-margin-right-small">
+						<span
+							class="theme-selector-icon css-variable-support has-border is-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Light					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start"
+					data-theme-to="dark">
+					<span class="theme-dark has-margin-right-small">
+						<span
+							class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Dark					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start"
+					data-theme-to="high-contrast">
+					<span class="theme-high-contrast has-margin-right-small">
+						<span
+							class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+High contrast					</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>				</li>
+				<li id="docs-sign-in-container-item">
+					<a class="docs-sign-in auth-status-determined not-authenticated button is-text has-inner-focus has-text-primary is-small" href="#">Sign in</a>
+					<div class="dropdown has-caret auth-status-determined authenticated">
+						<button class="dropdown-trigger button is-text has-inner-focus is-small is-icon-only-touch has-inner-focus" aria-label="Your Account" aria-controls="user-menu" aria-expanded="false">
+							<span class="icon" aria-hidden="true">
+								<span class="image">
+									<img class="has-body-background-medium is-rounded" data-profile-property="avatarThumbnailUrl">
+								</span>
+							</span>
+							<span class="is-inline-truncated has-margin-left-small" data-profile-property="userName"></span>
+						</button>
+						<div class="dropdown-menu box" id="user-menu" role="menu">
+							<div class="media is-user-dir">
+								<div class="media-left">
+									<span class="image is-64x64" aria-hidden="true">
+										<img class="has-body-background-medium is-rounded" data-profile-property="avatarUrl">
+									</span>
+								</div>
+								<div class="media-content">
+									<p class="title">
+										<span class="is-inline-truncated has-max-width-200" data-profile-property="userName"></span>
+									</p>
+									<p class="subtitle has-margin-bottom-none">
+										<span class="is-inline-truncated has-max-width-200" data-profile-property="upn"></span>
+									</p>
+									<ul class="is-unstyled has-margin-none has-margin-top-small">
+										<li><a href="/profile" data-profile-property="profileUrl">Profile</a></li>
+										<li><a href="/profile" data-profile-property="bookmarksUrl">Bookmarks</a></li>
+										<li><a href="/profile" data-profile-property="collectionsUrl">Collections</a></li>
+										<li><a class="docs-sign-out" href="#">Sign out</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<button type="button" class="contents-button button is-small is-text is-hidden-tablet has-inner-focus is-hidden-tablet" aria-label="Contents" data-bi-name="contents-expand-">
+				<span class="icon">
+					<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+				</span>
+				<span>Contents</span>
+			</button>
+		</div>
+	</div>
+
+	<div id="banner-holder" class="has-default-focus has-overflow-hidden">
+	</div>
+
+	<div id="disclaimer-holder" class="has-overflow-hidden has-default-focus"></div>
+	</div>
+
+	<div class="mainContainer  uhf-container has-top-padding  has-default-focus" data-bi-name="body">
+
+		<div class="columns has-large-gaps is-gapless-mobile ">
+
+			<div id="left-container" class="left-container is-hidden-mobile column is-one-third-tablet is-one-quarter-desktop">
+				<nav id="affixed-left-container" class="is-fixed is-flex is-flex-column" role="navigation" aria-label="Primary"></nav>
+			</div>
+
+			<section class="primary-holder column is-two-thirds-tablet is-three-quarters-desktop">
+				<div class="columns is-gapless-mobile has-large-gaps ">
+
+
+				<div id="main-column" class="column  is-full is-four-fifths-desktop ">
+
+					<main id="main" role="main" class="content " data-bi-name="content" lang="en-us" dir="ltr">
+
+
+
+						<h1 id="app-center-distribute--in-app-updates" sourcefile="sdk/distribute/ios.md" sourcestartlinenumber="16">App Center Distribute – In-app updates</h1>
+
+						<ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
+							<li class="displayDate loading">
+								<time role="presentation" datetime="2020-01-27T00:00:00.000Z" data-article-date-source="ms.date">01/27/2020</time>
+							</li>
+								<li class="readingTime">12 minutes to read</li>
+							<li class="contributors-holder">
+								<a class="has-inner-focus" href="https://github.com/MicrosoftDocs/appcenter-docs/blob/live/docs/sdk/distribute/ios.md" title="17 Contributors" aria-label="17 Contributors">
+									<ul class="contributors" data-bi-name="contributors" aria-hidden="true">
+												<li><img src="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/contributor.svg" data-src="https://github.com/botatoes.png?size=32" role="presentation"/></li>
+												<li><img src="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/contributor.svg" data-src="https://github.com/guperrot.png?size=32" role="presentation"/></li>
+												<li><img src="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/contributor.svg" data-src="https://github.com/dhei.png?size=32" role="presentation"/></li>
+												<li><img src="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/contributor.svg" data-src="https://github.com/annakocheshkova.png?size=32" role="presentation"/></li>
+												<li><img src="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/contributor.svg" data-src="https://github.com/asb3993.png?size=32" role="presentation"/></li>
+										<li><span class="is-size-8 has-text-subtle">+12</span></li>
+									</ul>
+								</a>
+							</li>
+
+						</ul>
+
+						<nav id="center-doc-outline" class="doc-outline is-hidden-desktop" data-bi-name="intopic toc" role="navigation" aria-label="Article Outline">
+							<h3>In this article</h3>
+						</nav>
+
+
+						<!-- <content> -->
+							
+<div class="op_single_selector">
+<ul>
+<li><a href="android" data-linktype="relative-path">Android</a></li>
+<li><a href="ios" data-linktype="relative-path">iOS</a></li>
+<li><a href="unity" data-linktype="relative-path">Unity</a></li>
+<li><a href="xamarin" data-linktype="relative-path">Xamarin</a></li>
+</ul>
+</div>
+<p>App Center Distribute will let your users install a new version of the app when you distribute it via App Center. With a new version of the app available, the SDK will present an update dialog to the users to either download or postpone the new version. Once they choose to update, the SDK will start to update your application.</p>
+<div class="NOTE">
+<p>Note</p>
+<p>There are a few things to consider when using in-app updates:</p>
+<ol>
+<li>If you have released your app in the App Store, in-app updates will be disabled.</li>
+<li>If you are running automated UI tests, enabled in-app updates will block your automated UI tests as they will try to authenticate against the App Center backend. We recommend to not enable App Center Distribute for your UI test target.</li>
+</ol>
+</div>
+<div class="IMPORTANT">
+<p>Important</p>
+<p>App Center SDK doesn't support multiple window apps that were introduced in iOS 13.</p>
+</div>
+<h2 id="add-in-app-updates-to-your-app">Add in-app updates to your app</h2>
+<p>Please follow the <a href="../getting-started/ios" data-linktype="relative-path">Get started</a> section if you haven't configured the SDK in your application.</p>
+<h3 id="1-add-the-app-center-distribute-module">1. Add the App Center Distribute module</h3>
+<p>The App Center SDK is designed with a modular approach – you only need to integrate the modules of the services that you're interested in.</p>
+<h4 id="integration-via-cocoapods">Integration via Cocoapods</h4>
+<p>If you are integrating App Center into your app via Cocoapods, add the following dependency to your podfile and run <code>pod install</code>.</p>
+<pre><code class="lang-ruby">pod 'AppCenter/Distribute'
+</code></pre>
+<h4 id="integration-via-carthage">Integration via Carthage</h4>
+<ol>
+<li><p>Add the following dependency to your <code>Cartfile</code> to include App Center Distribute.</p>
+<pre><code class="lang-ruby"># Use the following line to get the latest version of App Center
+github &quot;microsoft/appcenter-sdk-apple&quot;
+</code></pre>
+<pre><code class="lang-ruby"># Use the following line to get the specific version of App Center
+github &quot;microsoft/appcenter-sdk-apple&quot; ~&gt; X.X.X
+</code></pre>
+</li>
+<li><p>Run <code>carthage update</code>.</p>
+</li>
+<li><p>Open your application target's <strong>General</strong> settings tab. Drag and drop the <strong>AppCenterDistribute.framework</strong> file from the <strong>Carthage/Build/iOS</strong> folder to the <strong>Linked Frameworks and Libraries</strong> section in XCode.</p>
+</li>
+<li><p>Drag and drop <strong>AppCenterDistributeResources.bundle</strong> from <strong>AppCenterDistribute.framework</strong> into XCode's Project Navigator.</p>
+</li>
+<li><p>A dialog will appear, make sure your app target is checked. Then click <strong>Finish</strong>.</p>
+</li>
+</ol>
+<h4 id="integration-by-copying-the-binaries-into-your-project">Integration by copying the binaries into your project</h4>
+<p>If you wish to manually integrate the module, follow this <a href="ios-manual-integration" data-linktype="relative-path">documentation link</a>.</p>
+<h3 id="2-start-app-center-distribute">2. Start App Center Distribute</h3>
+<p>App Center only uses the specific modules you invoke in your application. You must explicitly call each of them when starting the SDK.</p>
+<h4 id="21-add-the-import-for-app-center-distribute">2.1 Add the import for App Center Distribute</h4>
+<p>Open the project's <strong>AppDelegate.m</strong> file in Objective-C or <strong>AppDelegate.swift</strong> file in Swift and add the following import statements:</p>
+<pre><code class="lang-objc">@import AppCenter;
+@import AppCenterDistribute;
+</code></pre>
+<pre><code class="lang-swift">import AppCenter
+import AppCenterDistribute
+</code></pre>
+<h4 id="22-add-the-startwithservices-method">2.2 Add the <code>start:withServices:</code> method</h4>
+<p>Add <code>MSDistribute</code> to your <code>start:withServices:</code> method to start App Center Distribute service.</p>
+<p>Insert the following line to start the SDK in the project's <strong>AppDelegate.m</strong> class for Objective-C or <strong>AppDelegate.swift</strong> class for Swift in the <code>didFinishLaunchingWithOptions</code> method.</p>
+<pre><code class="lang-objc">[MSAppCenter start:@&quot;{Your App Secret}&quot; withServices:@[[MSDistribute class]]];
+</code></pre>
+<pre><code class="lang-swift">MSAppCenter.start(&quot;{Your App Secret}&quot;, withServices: [MSDistribute.self])
+</code></pre>
+<p>Make sure you have replaced <code>{Your App Secret}</code> in the code sample above with your App Secret. Please also check out the <a href="../getting-started/ios" data-linktype="relative-path">Get started</a> section if you haven't configured the SDK in your application.</p>
+<h4 id="23-modify-the-projects-infoplist">2.3 Modify the project's <strong>Info.plist</strong></h4>
+<div class="NOTE">
+<p>Note</p>
+<p>If you've previously configured App Center Auth, the <code>URL types</code> key may already be present. In this case, add a new entry to the <code>URL types</code> key by following the instructions from step 3.</p>
+</div>
+<ol>
+<li>In the project's <strong>Info.plist</strong> file, add a new key for <code>URL types</code> by clicking the '+' button next to &quot;Information Property List&quot; at the top. If Xcode displays your <strong>Info.plist</strong> as source code, refer to the tip below.</li>
+<li>Change the key type to Array.</li>
+<li>Add a new entry to the array (<code>Item 0</code>) and change the type to Dictionary.</li>
+<li>Under <code>Item 0</code>, add a <code>URL Schemes</code> key and change the type to Array.</li>
+<li>Under your <code>URL Schemes</code> key, add a new entry (<code>Item 0</code>).</li>
+<li>Under <code>URL Schemes</code> &gt; <code>Item 0</code>, change the value to <code>appcenter-{APP_SECRET}</code> and replace <code>{APP_SECRET}</code> with the App Secret of your app.</li>
+</ol>
+<div class="TIP">
+<p>Tip</p>
+<p>If you want to verify that you modified the Info.plist correctly, open it as source code. It should contain the following entry with your App Secret instead of <code>{APP_SECRET}</code>:</p>
+<pre><code class="lang-xml">&lt;key&gt;CFBundleURLTypes&lt;/key&gt;
+&lt;array&gt;
+  &lt;dict&gt;
+  	&lt;key&gt;CFBundleURLSchemes&lt;/key&gt;
+  	&lt;array&gt;
+  		&lt;string&gt;appcenter-{APP_SECRET}&lt;/string&gt;
+  	&lt;/array&gt;
+  &lt;/dict&gt;
+&lt;/array&gt;
+</code></pre>
+</div>
+<h2 id="use-private-distribution-group">Use private distribution group</h2>
+<p>By default, Distribute uses a public distribution group. If you want to use a private distribution group, you will need to explicitly set it via <code>updateTrack</code> property.</p>
+<pre><code class="lang-objc">MSDistribute.updateTrack = MSUpdateTrackPrivate;
+</code></pre>
+<pre><code class="lang-swift">MSDistribute.updateTrack = MSUpdateTrackPrivate
+</code></pre>
+<div class="NOTE">
+<p>Note</p>
+<p>The default value is <code>MSUpdateTrackPublic</code>. This property can only be updated before the <code>MSAppCenter.start</code> method call. Changes to the update track are not persisted when the application process restarts, thus if the property is not always updated before the <code>MSAppCenter.start</code> call, it will be public, by default.</p>
+</div>
+<p>After this call, a browser window will open up to authenticate the user. All the subsequent update checks will get the latest release on the private track.</p>
+<p>If a user is on the <strong>private track</strong>, it means that after the successful authentication, they will get the latest release from any private distribution groups they are a member of.
+If a user is on the <strong>public track</strong>, it means that they will get the latest release from any public distribution group.</p>
+<h2 id="customize-or-localize-the-in-app-update-dialog">Customize or localize the in-app update dialog</h2>
+<h3 id="1-customize-or-localize-text">1. Customize or localize text</h3>
+<p>You can easily provide your own resource strings if you'd like to localize the text displayed in the update dialog. Look at <a href="https://github.com/Microsoft/AppCenter-SDK-Apple/blob/master/AppCenterDistribute/AppCenterDistribute/Resources/en.lproj/AppCenterDistribute.strings" data-linktype="external">this strings file</a>. Use the same string name/key and specify the localized value to be reflected in the dialog in your own app strings files.</p>
+<h3 id="2-customize-the-update-dialog">2. Customize the update dialog</h3>
+<p>You can customize the default update dialog's appearance by implementing the <code>MSDistributeDelegate</code> protocol. You need to register the delegate before starting the SDK as shown in the following example:</p>
+<pre><code class="lang-objc">[MSDistribute setDelegate:self];
+</code></pre>
+<pre><code class="lang-swift">MSDistribute.setDelegate(self);
+</code></pre>
+<p>Here is an example of the delegate implementation that replaces the SDK dialog with a custom one:</p>
+<pre><code class="lang-objc">- (BOOL)distribute:(MSDistribute *)distribute releaseAvailableWithDetails:(MSReleaseDetails *)details {
+
+  // Your code to present your UI to the user, e.g. an UIAlertController.
+  UIAlertController *alertController = [UIAlertController
+      alertControllerWithTitle:@&quot;Update available.&quot;
+                       message:@&quot;Do you want to update?&quot;
+                preferredStyle:UIAlertControllerStyleAlert];
+
+  [alertController
+      addAction:[UIAlertAction actionWithTitle:@&quot;Update&quot;
+                                         style:UIAlertActionStyleCancel
+                                       handler:^(UIAlertAction *action) {
+                                         [MSDistribute notifyUpdateAction:MSUpdateActionUpdate];
+                                       }]];
+
+  [alertController
+      addAction:[UIAlertAction actionWithTitle:@&quot;Postpone&quot;
+                                         style:UIAlertActionStyleDefault
+                                       handler:^(UIAlertAction *action) {
+                                         [MSDistribute notifyUpdateAction:MSUpdateActionPostpone];
+                                       }]];
+
+  // Show the alert controller.
+  [self.window.rootViewController presentViewController:alertController animated:YES completion:nil];
+  return YES;
+}
+</code></pre>
+<pre><code class="lang-swift">func distribute(_ distribute: MSDistribute!, releaseAvailableWith details: MSReleaseDetails!) -&gt; Bool {
+
+  // Your code to present your UI to the user, e.g. an UIAlertController.
+  let alertController = UIAlertController(title: &quot;Update available.&quot;,
+                                        message: &quot;Do you want to update?&quot;,
+                                 preferredStyle:.alert)
+
+  alertController.addAction(UIAlertAction(title: &quot;Update&quot;, style: .cancel) {_ in
+    MSDistribute.notify(.update)
+  })
+
+  alertController.addAction(UIAlertAction(title: &quot;Postpone&quot;, style: .default) {_ in
+    MSDistribute.notify(.postpone)
+  })
+
+  // Show the alert controller.
+  self.window?.rootViewController?.present(alertController, animated: true)
+  return true;
+}
+</code></pre>
+<p>In case you return <code>YES</code>/<code>true</code> in the above method, your app should obtain user's choice and message the SDK with the result using the following API.</p>
+<pre><code class="lang-objc">// Depending on the user's choice, call notifyUpdateAction: with the right value.
+[MSDistribute notifyUpdateAction:MSUpdateActionUpdate];
+[MSDistribute notifyUpdateAction:MSUpdateActionPostpone];
+</code></pre>
+<pre><code class="lang-swift">// Depending on the user's choice, call notify() with the right value.
+MSDistribute.notify(MSUpdateAction.update);
+MSDistribute.notify(MSUpdateAction.postpone);
+</code></pre>
+<p>If you don't call the above method, the <code>releaseAvailableWithDetails:</code>-method will repeat whenever your app is entering to the foreground.</p>
+<h2 id="enable-or-disable-app-center-distribute-at-runtime">Enable or disable App Center Distribute at runtime</h2>
+<p>You can enable and disable App Center Distribute at runtime. If you disable it, the SDK will not provide any in-app update functionality but you can still use Distribute service in App Center portal.</p>
+<pre><code class="lang-objc">[MSDistribute setEnabled:NO];
+</code></pre>
+<pre><code class="lang-swift">MSDistribute.setEnabled(false)
+</code></pre>
+<p>To enable App Center Distribute again, use the same API but pass <code>YES</code>/<code>true</code> as a parameter.</p>
+<pre><code class="lang-objc">[MSDistribute setEnabled:YES];
+</code></pre>
+<pre><code class="lang-swift">MSDistribute.setEnabled(true)
+</code></pre>
+<p>The state is persisted in the device's storage across application launches.</p>
+<div class="NOTE">
+<p>Note</p>
+<p>This method must only be used after <code>MSDistribute</code> has been started.</p>
+</div>
+<h2 id="check-if-app-center-distribute-is-enabled">Check if App Center Distribute is enabled</h2>
+<p>You can also check if App Center Distribute is enabled or not:</p>
+<pre><code class="lang-objc">BOOL enabled = [MSDistribute isEnabled];
+</code></pre>
+<pre><code class="lang-swift">var enabled = MSDistribute.isEnabled()
+</code></pre>
+<div class="NOTE">
+<p>Note</p>
+<p>This method must only be used after <code>MSDistribute</code> has been started, it will always return <code>NO</code> or <code>false</code> before start.</p>
+</div>
+<h2 id="dont-initialize-app-center-distribute-during-development">Don't initialize App Center Distribute during development</h2>
+<p>If in private mode, App Center Distribute will open up its UI/browser at application start. While this is an expected behavior for your end users, it could be disruptive for you during the development stage of your application. We do not recommend initializing <code>MSDistribute</code> for your <code>DEBUG</code> configuration.</p>
+<pre><code class="lang-objc">#if DEBUG
+   [MSAppCenter start:@&quot;{Your App Secret}&quot; withServices:@[[MSAnalytics class], [MSCrashes class]]];
+#else
+   [MSAppCenter start:@&quot;{Your App Secret}&quot; withServices:@[[MSAnalytics class], [MSCrashes class], [MSDistribute class]]];
+#endif
+</code></pre>
+<pre><code class="lang-swift">#if DEBUG
+   MSAppCenter.start(&quot;{Your App Secret}&quot;, withServices: [MSAnalytics.self, MSCrashes.self])
+#else
+   MSAppCenter.start(&quot;{Your App Secret}&quot;, withServices: [MSAnalytics.self, MSCrashes.self, MSDistribute.self])
+#endif
+</code></pre>
+<h2 id="how-do-in-app-updates-work">How do in-app updates work?</h2>
+<div class="NOTE">
+<p>Note</p>
+<p>For in-app updates to work, an app build should be downloaded from the link. It won't work if installed from an IDE or manually.</p>
+</div>
+<p>The in-app updates feature works as follows:</p>
+<ol>
+<li><p>This feature will ONLY work with builds that are distributed using <strong>App Center Distribute</strong> service. It won't work when the debugger is attached or if the iOS Guided Access feature is turned on..</p>
+</li>
+<li><p>Once you integrate the SDK, build a release version of your app and upload it to App Center, users in that distribution group will be notified for the new release via an email.</p>
+</li>
+<li><p>When each user opens the link in their email, the application will be installed on their device. It's important that they use the email link to install the app - App Center Distribute does not support in-app-updates for apps that have been installed from other sources (e.g. downloading the app from an email attachment). When an application is downloaded from the link, the SDK saves important information from cookies to check for updates later, otherwise the SDK doesn’t have that key information.</p>
+</li>
+<li><p>If the application sets the track to private, a browser will open to authenticate the user and enable in-app updates. The browser will not open again as long as the authentication information remains valid even when switching back to the public track and back to private again later. If the browser authentication is successful, the user is redirected back to the application automatically. If the track is public (which is the default), the next step happens directly.</p>
+<ul>
+<li>On iOS 9 and 10, an instance of <code>SFSafariViewController</code> will open within the app to authenticate the user. It will close itself automatically after the authentication succeeded.</li>
+<li>On iOS 11, the user experience is similar to iOS 9 and 10 but iOS 11 will ask the user for their permission to access login information. This is a system level dialog and it cannot be customized. If the user cancels the dialog, they can continue to use the version they are testing, but they won't get in-app-updates. They will be asked to access login information again when they launch the app the next time.</li>
+</ul>
+</li>
+<li><p>A new release of the app shows the in-app update dialog asking users to update your application if it has:</p>
+<ul>
+<li>a higher value of <code>CFBundleShortVersionString</code> or</li>
+<li>an equal value of <code>CFBundleShortVersionString</code> but a higher value of <code>CFBundleVersion</code>.</li>
+<li>the versions are the same but the build unique identifier is different.</li>
+</ul>
+</li>
+</ol>
+<div class="TIP">
+<p>Tip</p>
+<p>If you upload the same ipa a second time, the dialog will <strong>NOT</strong> appear as the binaries are identical. If you upload a <strong>new</strong> build with the same version properties, it will show the update dialog. The reason for this is that it is a <strong>different</strong> binary.</p>
+</div>
+<h2 id="how-do-i-test-in-app-updates">How do I test in-app updates?</h2>
+<p>You need to upload release builds (that use the Distribute module of the App Center SDK) to the App Center Portal to test in-app updates, increasing version numbers every time.</p>
+<ol>
+<li>Create your app in the App Center Portal if you have not done that already.</li>
+<li>Create a new distribution group and name it so you can recognize that this is just meant for testing the in-app update feature.</li>
+<li>Add yourself (or all people who you want to include on your test of the in-app update feature). Use a new or throw-away email address for this, that was not used for that app on App Center. This ensures that you have an experience that's close to the experience of your real testers.</li>
+<li>Create a new build of your app that includes <strong>App Center Distribute</strong> and contains the setup logic as described below. If the group is private, don't forget to set the private in-app update track before start using the <a href="#use-private-distribution-group" data-linktype="self-bookmark">updateTrack property</a>.</li>
+<li>Click on the <strong>Distribute new release</strong> button in the portal and upload your build of the app.</li>
+<li>Once the upload has finished, click <strong>Next</strong> and select the <strong>Distribution group</strong> that you just created as the <strong>Destination</strong> of that app distribution.</li>
+<li>Review the Distribution and distribute the build to your in-app testing group.</li>
+<li>People in that group will receive an invite to be testers of the app. Once they accept the invite, they can download the app from the App Center Portal from their mobile device. Once they have in-app updates installed, you're ready to test in-app updates.</li>
+<li>Bump the version name (<code>CFBundleShortVersionString</code>) of your app.</li>
+<li>Build the release version of your app and upload a new build of your app just like you did in the previous step and distribute this to the <strong>Distribution Group</strong> you created earlier. Members of the Distribution Group will be prompted for a new version the next time the app starts.</li>
+</ol>
+<div class="TIP">
+<p>Tip</p>
+<p>Please have a look at the information on how to <a href="../../distribution/index" data-linktype="relative-path">utilize App Center Distribute</a> for more detailed information about <strong>Distribution Groups</strong> etc.
+While it is possible to use App Center Distribute to distribute a new version of your app without adding any code, adding App Center Distribute to your app's code will result in a more seamless experience for your testers and users as they get the in-app update experience.</p>
+</div>
+<h2 id="disable-forwarding-of-the-application-delegates-methods-calls-to-app-center-services">Disable forwarding of the application delegate's methods calls to App Center services</h2>
+<p>The App Center SDK uses swizzling to improve its integration by forwarding itself some of the application delegate's methods calls. Method swizzling is a way to change the implementation of methods at runtime. If for any reason you don't want to use swizzling (e.g. because of a specific policy) then you can disable this forwarding for all App Center services by following the steps below:</p>
+<ol>
+<li>Open the project's <strong>Info.plist</strong> file.</li>
+<li>Add <code>AppCenterAppDelegateForwarderEnabled</code> key and set the value to <code>0</code>. This will disable application delegate forwarding for all App Center services.</li>
+<li>Add the <code>openURL</code> callback in the project's <code>AppDelegate</code> file.</li>
+</ol>
+<pre><code class="lang-objc">- (BOOL)application:(UIApplication *)application
+	            openURL:(NSURL *)url
+	  sourceApplication:(NSString *)sourceApplication
+	         annotation:(id)annotation {
+
+	// Pass the url to MSDistribute.
+	return [MSDistribute openURL:url];
+}
+</code></pre>
+<pre><code class="lang-swift">func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -&gt; Bool {
+
+  // Pass the URL to MSDistribute.
+  return MSDistribute.open(url as URL!)
+}
+</code></pre>
+
+						<!-- </content> -->
+
+						</main>
+
+						<!-- recommended content page section -->
+
+							<nav data-bi-name="recommendation-bottom" hidden id="recommended-content-center" class="is-hidden-desktop" aria-labelledby="recommended-content-center-title">
+								<h3 id="recommended-content-center-title" class="is-size-2 has-margin-top-large has-margin-bottom-small">Related Articles</h3>
+							</nav>
+
+						<!-- end recommended content page section -->
+
+						<!-- rating mobile section -->
+								<div class="is-hidden-desktop has-border-top has-margin-top-large has-padding-top-small">
+									
+<div data-bi-name="rating" class="feedback-verbatim has-border-bottom has-padding-bottom-small has-margin-bottom-small">
+	<div class="binary-rating">
+		<div class="binary-rating-buttons">
+			<h3 class="has-text-weight-semibold has-margin-top-none has-margin-bottom-small">Is this page helpful?</h3>
+			<div>
+				<button class="thumb-rating like has-inner-focus has-padding-left-extra-small has-padding-right-extra-small" title="Yes" data-bi-name="rating-yes" data-bi-sat="1">
+					<span class="icon docon docon-like" aria-hidden="true"></span><span>Yes</span>
+				</button>
+				<button class="thumb-rating dislike has-inner-focus has-padding-none has-padding-right-extra-small" title="No" data-bi-name="rating-no" data-bi-sat="0" aria-expanded="false" aria-haspopup="true" aria-controls="rating-feedback">
+					<span class="icon docon docon-dislike" aria-hidden="true"></span><span>No</span>
+				</button>
+			</div>
+		</div>
+		<form class="feedback-verbatim-form is-hidden">
+			<div class="verbatim-textarea box is-relative has-box-shadow-none has-border has-margin-top-small has-padding-extra-small is-size-8">
+				<label for="rating-textarea-mobile" class="visually-hidden">Any additional feedback?</label>
+				<textarea id="rating-textarea-mobile" rows="4" maxlength="999" placeholder="Any additional feedback?" required class="textarea has-border-none has-box-shadow-none has-inner-focus"></textarea>
+			</div>
+			<div class="buttons is-right has-margin-top-medium has-margin-right-extra-small">
+				<button class="skip-rating button is-text is-link is-small" type="button">Skip</button>
+				<button disabled class="submit-rating button is-primary is-small" type="submit" data-bi-name="rating-verbatim">Submit</button>
+			</div>
+		</form>
+	</div>
+	<div class="thankyou-rating is-hidden">
+		<p>Thank you.</p>
+	</div>
+</div>								</div>
+						<!-- end rating mobile section -->
+
+
+<section class="feedback-section" data-bi-name="feedback-section">
+
+	<h2 id="feedback">Feedback</h2>
+
+	<div class="alert choose-feedback-type">
+		<p id="send-feedback-about" aria-hidden="true">Send feedback about</p>
+
+		<div class="choose-feedback-buttons">
+			<a class="button feedback-type-product has-margin-bottom-small" aria-label="Send feedback about this product" href="https://intercom.help/appcenter/getting-started/getting-help-with-app-center" data-bi-name="product-feedback">
+				<span>This product</span>
+				<span class="icon docon docon-navigate-external" aria-hidden="true"></span>
+			</a>
+
+			<div class="field has-addons is-inline-flex has-margin-bottom-small">
+				<div class="control has-margin-top-none has-margin-bottom-none">
+					<button class="button feedback-sign-in-button has-text-wrap" aria-label="Send feedback about this page" data-bi-name="feedback-sign-in">
+						<span class="icon docon docon-brand-github" aria-hidden="true"></span>
+						<span>This page</span>
+					</button>
+				</div>
+				<div class="control dropdown has-caret has-margin-top-none has-margin-bottom-none">
+					<button class="button dropdown-trigger is-full-height" aria-describedby="send-feedback-about" aria-expanded="false" aria-controls="fbm0" aria-label="Additional feedback options" data-bi-name="documentation-feedback-menu">
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-chevron-down-light expanded-indicator"></span>
+						</span>
+					</button>
+					<div id="fbm0" class="dropdown-menu documentation-feedback-menu">
+						You may also leave feedback directly on <a data-bi-name="create-issue-on-github">GitHub <span class="docon docon-navigate-external" aria-hidden="true"></span></a>.					</div>
+				</div>
+			</div>
+
+			<div class="field has-addons is-inline-flex has-margin-bottom-small" hidden>
+				<div class="control has-margin-top-none has-margin-bottom-none">
+					<button class="button feedback-form-toggle" aria-describedby="send-feedback-about" aria-expanded="false" aria-controls="feedback-form"
+						data-bi-name="documentation-feedback">
+This page					</button>
+				</div>
+				<div class="control dropdown has-caret has-margin-top-none has-margin-bottom-none">
+					<button class="button dropdown-trigger" aria-describedby="send-feedback-about" aria-expanded="false" aria-controls="fbm1" aria-label="Additional feedback options" data-bi-name="documentation-feedback-menu">
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-chevron-down-light expanded-indicator"></span>
+						</span>
+					</button>
+					<div id="fbm1" class="dropdown-menu documentation-feedback-menu">
+						You may also leave feedback directly on <a data-bi-name="create-issue-on-github">GitHub <span class="docon docon-navigate-external" aria-hidden="true"></span></a>.					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<form class="feedback-form" id="feedback-form" accept-charset="UTF-8" autocomplete="off" action="javascript:" hidden>
+		<h3 class="feedback-form-heading current-user">
+			<img class="avatar" alt="Avatar" width="36" height="36" aria-hidden="true">
+			<span class="username" aria-hidden="true"></span>
+			<span class="visually-hidden">Send feedback about this page</span>
+		</h3>
+
+		<label>
+			<span class="visually-hidden">Title</span>
+			<input class="input is-radiusless has-margin-bottom-small" name="title" type="text" placeholder="Title" required pattern=".*[^\s]+.*">
+		</label>
+		<label>
+			<span class="visually-hidden">Leave a comment</span>
+			<textarea name="body" placeholder="Leave a comment" class="textarea is-radiusless" required></textarea>
+		</label>
+
+		<div class="action-container">
+			<button class="button is-primary" type="submit" name="submit">Submit feedback</button>
+		</div>
+	</form>
+
+	<div class="feedback-status alert is-loading">
+		<p>Loading feedback...</p>
+	</div>
+
+	<div class="feedback-tab-group tabGroup" data-tab-group-independent hidden>
+		<ul role="tablist">
+			<li role="presentation">
+				<a href="#tabpanel-issues-open" role="tab" aria-controls="tabpanel-issues-open" data-tab="issues-open"></a>
+			</li>
+			<li role="presentation">
+				<a href="#tabpanel-issues-closed" role="tab" aria-controls="tabpanel-issues-closed" data-tab="issues-closed"></a>
+			</li>
+		</ul>
+		<section id="tabpanel-issues-open" role="tabpanel" data-tab="issues-open">
+			<div class="no-issues-placeholder">There are no open issues</div>
+			<ul class="github-issues-list" aria-label="Open Issues"></ul>
+		</section>
+		<section id="tabpanel-issues-closed" role="tabpanel" data-tab="issues-closed">
+			<div class="no-issues-placeholder">There are no closed issues</div>
+			<ul class="github-issues-list" aria-label="Closed Issues"></ul>
+		</section>
+	</div>
+	<div class="action-container">
+		<a class="view-on-github" href="https://github.com/MicrosoftDocs/appcenter-docs/issues" data-bi-name="view-on-github"
+		 hidden>
+			<span class="docon docon-brand-github" aria-hidden="true"></span>
+			<span>View on GitHub</span>
+			<span class="docon docon-navigate-external" aria-hidden="true"></span>
+		</a>
+	</div>
+</section>
+
+						<!-- end feedback section -->
+
+						<!-- feedback report section -->
+						<!-- end feedback report section -->
+
+						<div class="footerContainer is-visible-interactive has-default-focus ">
+<footer id="footer-interactive" data-bi-name="footer" class="footer-layout">
+
+    <a data-mscc-ic="false" class="locale-selector-link" href="#" data-bi-name="select-locale"><span class="icon docon docon-world is-size-4 has-margin-right-small" aria-hidden="true"></span><span class="local-selector-link-text has-inner-focus"></span></a>
+
+    <ul class="links" data-bi-name="footerlinks">
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/previous-versions/" data-bi-name="archivelink">Previous Version Docs</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/teamblog" data-bi-name="bloglink">Blog</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/contribute" data-bi-name="contributorGuide">Contribute</a></li>
+			<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy &amp; Cookies</a></li>
+		<li><a data-mscc-ic="false" href="/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li>
+		<li><a data-mscc-ic="false" href="https://aka.ms/sitefeedback" data-bi-name="feedback">Site Feedback</a></li>
+		<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Trademarks</a></li>
+    </ul>
+</footer>
+						</div>
+					</div>
+
+					<div class="is-size-7 right-container column is-one-quarter is-one-fifth-desktop is-hidden-mobile is-hidden-tablet-only" data-bi-name="pageactions" role="complementary" aria-label="Page Actions">
+						<div id="affixed-right-container" class="doc-outline is-fixed is-vertically-scrollable">
+								
+<div data-bi-name="rating" class="feedback-verbatim has-border-bottom has-padding-bottom-small has-margin-bottom-small">
+	<div class="binary-rating">
+		<div class="binary-rating-buttons">
+			<h3 class="has-text-weight-semibold has-margin-top-none has-margin-bottom-small">Is this page helpful?</h3>
+			<div>
+				<button class="thumb-rating like has-inner-focus has-padding-left-extra-small has-padding-right-extra-small" title="Yes" data-bi-name="rating-yes" data-bi-sat="1">
+					<span class="icon docon docon-like" aria-hidden="true"></span><span>Yes</span>
+				</button>
+				<button class="thumb-rating dislike has-inner-focus has-padding-none has-padding-right-extra-small" title="No" data-bi-name="rating-no" data-bi-sat="0" aria-expanded="false" aria-haspopup="true" aria-controls="rating-feedback">
+					<span class="icon docon docon-dislike" aria-hidden="true"></span><span>No</span>
+				</button>
+			</div>
+		</div>
+		<form class="feedback-verbatim-form is-hidden">
+			<div class="verbatim-textarea box is-relative has-box-shadow-none has-border has-margin-top-small has-padding-extra-small is-size-8">
+				<label for="rating-textarea-desktop" class="visually-hidden">Any additional feedback?</label>
+				<textarea id="rating-textarea-desktop" rows="4" maxlength="999" placeholder="Any additional feedback?" required class="textarea has-border-none has-box-shadow-none has-inner-focus"></textarea>
+			</div>
+			<div class="buttons is-right has-margin-top-medium has-margin-right-extra-small">
+				<button class="skip-rating button is-text is-link is-small" type="button">Skip</button>
+				<button disabled class="submit-rating button is-primary is-small" type="submit" data-bi-name="rating-verbatim">Submit</button>
+			</div>
+		</form>
+	</div>
+	<div class="thankyou-rating is-hidden">
+		<p>Thank you.</p>
+	</div>
+</div>								<nav data-bi-name="recommendation-sidebar" hidden id="recommended-content-nav" role="navigation" aria-labelledby="recommended-content-nav-title">
+									<h3 id="recommended-content-nav-title">Related Articles</h3>
+								</nav>
+							<nav id="side-doc-outline" data-bi-name="intopic toc" role="navigation" aria-label="Article Outline">
+								<h3>In this article</h3>
+							</nav>
+						</div>
+					</div>
+
+					<!--end of div.columns -->
+				</div>
+
+			<!--end of .primary-holder -->
+			</section>
+
+			<aside id="interactive-container" class="interactive-container is-visible-interactive column has-body-background-dark ">
+			</aside>
+		</div>
+
+		<!--end of .mainContainer -->
+	</div>
+
+	<div id="openFeedbackContainer" class="openfeedback-container"></div>
+
+	<div class="footerContainer has-default-focus is-hidden-interactive ">
+<footer id="footer" data-bi-name="footer" class="footer-layout uhf-container has-padding" role="contentinfo">
+
+    <a data-mscc-ic="false" class="locale-selector-link" href="#" data-bi-name="select-locale"><span class="icon docon docon-world is-size-4 has-margin-right-small" aria-hidden="true"></span><span class="local-selector-link-text"></span></a>
+
+    <ul class="links" data-bi-name="footerlinks">
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/previous-versions/" data-bi-name="archivelink">Previous Version Docs</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/teamblog" data-bi-name="bloglink">Blog</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/contribute" data-bi-name="contributorGuide">Contribute</a></li>
+			<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy &amp; Cookies</a></li>
+		<li><a data-mscc-ic="false" href="/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li>
+		<li><a data-mscc-ic="false" href="https://aka.ms/sitefeedback" data-bi-name="feedback">Site Feedback</a></li>
+		<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Trademarks</a></li>
+    </ul>
+</footer>
+	</div>
+
+	<div id="action-panel" role="region" aria-label="Action Panel" class="action-panel has-default-focus" tabindex="-1"></div>
+</body>
+</html>
